@@ -7,8 +7,7 @@ from app.core.database import Base, engine, init_db
 from app.core.settings import settings
 
 
-app = FastAPI(debug=settings.DEBUG)
-app = FastAPI(debug=True)
+app = FastAPI(root_path="/users")
 
 app.add_middleware(
     SessionMiddleware,

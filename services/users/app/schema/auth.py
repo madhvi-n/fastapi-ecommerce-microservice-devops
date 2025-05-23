@@ -3,6 +3,7 @@ from typing import Optional
 from uuid import UUID
 from app.models.user import UserRole
 from pydantic import EmailStr
+from datetime import datetime
 
 
 class Token(BaseModel):

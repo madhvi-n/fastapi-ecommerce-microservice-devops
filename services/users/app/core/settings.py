@@ -14,9 +14,6 @@ class Settings:
         print("Error: DATABASE_URL not set!")
 
     SECRET_KEY = os.getenv("SECRET_KEY")
-    if not SECRET_KEY:
-        print("Error: SECRET_KEY not set!")
-
     DEBUG = os.getenv("DEBUG", False)
     ALGORITHM = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES = 30
