@@ -10,13 +10,14 @@ spec:
     matchLabels:
       app: nginx
   template:
-    metadata:
+    metadata: 
       labels:
         app: nginx
     spec:
       containers:
         - name: nginx
           image: nginx:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
           volumeMounts:

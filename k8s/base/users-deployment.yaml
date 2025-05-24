@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: users
-          image: mayascarlet31/users:latest
+          image: users-service:latest # Change this to dockerhubusername/users:latest for remote K8 deployment
+          imagePullPolicy: Never  # Comment this for remote K8 deployment. It will allow k8 to fetch docker images from dockerhub (remote)
           ports:
             - containerPort: 8000
           envFrom:

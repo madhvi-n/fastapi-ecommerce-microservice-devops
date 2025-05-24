@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: products
-          image: mayascarlet31/products:latest
+          image: products-service:latest # change this to dockerhubusername/users:latest for remote K8
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
           envFrom:
