@@ -40,8 +40,8 @@ This project demonstrates deploying a microservices-based FastAPI e-commerce app
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/yourusername/ecommerce-fastapi.git
-   cd ecommerce-fastapi
+   git clone https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops.git
+   cd fastapi-ecommerce-microservice-devops
    ```
 
 2. Environment variables
@@ -64,18 +64,36 @@ minikube image load users-service
 minikube image load products-service
 ```
 
-### 2. Deploy with Kubernetes
+### 2. Deploy with Kubernetes [K8 deployment guide](./deployment-guides/k8-deployment-guide.md)
 Apply base Kubernetes manifests (deployments, services, configmaps, secrets):
 
 ```bash
 kubectl apply -f k8s/base
 ```
-Use Helm charts for easier management
+Use Helm charts for easier management [Helm deployment guide](./deployment-guides/helm-deployment-guide.md)
+
 ```bash
-helm install ecommerce ./helm-chart
+helm install users ./helm-chart/users
+helm install products ./helm-chart/products
 ```
 
-### 3. Infrastructure Provisioning with Terraform
+Use ingress [Ingress deployment guide](./deployment-guides/ingress-deployment-guide.md)
+```bash
+kubectl apply -f ingress.yaml
+
+# Check if ingress is created
+kubectl get ingress
+```
+
+Now you can access your services from your browser:
+
+```bash
+http://app.local/users
+http://app.local/products
+```
+
+
+### 3. Infrastructure Provisioning with Terraform (Locally)
 Use Terraform to provision cloud infrastructure resources (e.g., AWS S3 buckets, databases, etc.):
 ```bash
 terraform init
