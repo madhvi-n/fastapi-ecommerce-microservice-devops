@@ -53,7 +53,7 @@ helm install products ./helm-charts/products
 To upgrade later:
 
 ```bash
-help upgrade users ./helm-charts/users
+help upgrade --install users ./helm-charts/users
 ```
 
 ## 🔍 Step 5: Verify Deployments
@@ -72,7 +72,15 @@ export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/nam
 export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
 kubectl --namespace default port-forward $POD_NAME 8082:$CONTAINER_PORT
 ```
-Then open: http://localhost:8081/docs
+Then open: `http://localhost:8081/docs`
+
+OR
+
+```bash
+kubectl port-forward svc/users-users-service-charts 8000:8000
+kubectl port-forward svc/users-users-service-charts 8001:8000
+```
+Then open: `http://localhost:8000/health` or `http://localhost:8081/docs`
 
 ## 🛑 Step 7: Cleanup
 ```bash
