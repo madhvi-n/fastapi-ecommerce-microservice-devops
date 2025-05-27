@@ -6,13 +6,13 @@
 ## 🚀 Project Overview
 This project demonstrates deploying a microservices-based FastAPI e-commerce application using modern DevOps tooling and best practices:
 
-* Microservices: users and products services built with FastAPI.
-* Containerization: Docker for packaging apps.
-* Orchestration: Kubernetes (Minikube) for deployment and scaling.
-* Configuration Management: Helm charts for templating Kubernetes manifests.
-* Infrastructure as Code: Terraform for provisioning cloud resources.
-* Monitoring & Observability: Prometheus + Grafana for metrics; ELK Stack for logging.
-* CI/CD: Automated pipelines for build, test, and deployment.
+* **Microservices**: users and products services built with FastAPI.
+* **Containerization**: Docker for packaging apps.
+* **Orchestration**: Kubernetes (Minikube) for deployment and scaling.
+* **Configuration Management**: Helm charts for templating Kubernetes manifests.
+* **Infrastructure as Code**: Terraform for provisioning cloud resources.
+* **Monitoring & Observability**: Prometheus + Grafana for metrics; ELK Stack for logging.
+* **CI/CD**: Automated pipelines for build, test, and deployment.
 
 
 ## Features
@@ -83,6 +83,9 @@ kubectl apply -f ingress.yaml
 
 # Check if ingress is created
 kubectl get ingress
+
+# Check if ingress is running
+kubectl get pods -n ingress-nginx
 ```
 
 Now you can access your services from your browser:
