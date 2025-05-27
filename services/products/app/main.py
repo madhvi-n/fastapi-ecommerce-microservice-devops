@@ -9,3 +9,7 @@ def on_startup():
     init_db()
 
 app.include_router(product_router, prefix="/products", tags=["Products"])
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}

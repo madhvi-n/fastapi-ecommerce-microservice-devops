@@ -9,6 +9,7 @@ from app.core.settings import settings
 
 app = FastAPI(root_path="/users")
 
+
 app.add_middleware(
     SessionMiddleware,
     secret_key=settings.SECRET_KEY,
@@ -25,6 +26,12 @@ app.add_middleware(
 )
 
 app.include_router(auth_router, prefix=settings.PREFIX)
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 
 @app.on_event("startup")
 def startup():
