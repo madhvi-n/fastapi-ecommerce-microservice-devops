@@ -1,0 +1,37 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build user service Docker image
+      run: |
+        cd services/user
+        docker build . -t fastapi-user:$(date +%s)
+
+    - name: Build product service Docker image
+      run: |
+        cd services/products
+        docker build . -t fastapi-products:$(date +%s)
+        
+    # - name: Build user service Docker image
+    #   run: |
+    #     docker build ./services/user \
+    #       -f ./services/user/Dockerfile \
+    #       -t fastapi-user:$(date +%s)
+
+    # - name: Build product service Docker image
+    #   run: |
+    #     docker build ./services/products \
+    #       -f ./services/products/Dockerfile \
+    #       -t fastapi-products:$(date +%s)
