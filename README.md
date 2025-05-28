@@ -1,8 +1,9 @@
 # FastAPI Ecommerce Microservice DevOps Project
 [![Docker Image CI](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/docker-image.yml/badge.svg)](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/docker-image.yml)
 [![CodeQL Advanced](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/codeql.yml/badge.svg)](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/codeql.yml)
+[![FastAPI CI](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/python-app.yml/badge.svg)](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/python-app.yml)
 ![Kubernetes](https://img.shields.io/badge/k8s-ready-blueviolet)
-![CI/CD](https://img.shields.io/badge/ci%2Fcd-planned-yellow)
+
 
 ## 🚀 Project Overview
 This project demonstrates deploying a microservices-based FastAPI e-commerce application using modern DevOps tooling and best practices:
