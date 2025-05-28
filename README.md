@@ -1,5 +1,5 @@
 # FastAPI Ecommerce Microservice DevOps Project
-![Docker](https://img.shields.io/badge/docker-ready-blue)
+[![Docker Image CI](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/docker-image.yml/badge.svg)](https://github.com/madhvi-n/fastapi-ecommerce-microservice-devops/actions/workflows/docker-image.yml)
 ![Kubernetes](https://img.shields.io/badge/k8s-ready-blueviolet)
 ![CI/CD](https://img.shields.io/badge/ci%2Fcd-planned-yellow)
 
