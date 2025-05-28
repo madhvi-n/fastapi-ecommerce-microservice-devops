@@ -17,28 +17,28 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Read and bump version
-      id: version
-      working-directory: ./services/users
-      run: |
-        version=$(cat VERSION)
-        echo "Current version: $version"
-        # Extract major, minor, patch
-        IFS='.' read -r major minor patch <<< "$version"
-        patch=$((patch + 1))
-        new_version="${major}.${minor}.${patch}"
-        echo "$new_version" > VERSION
-        echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
+    # - name: Read and bump version
+    #   id: version
+    #   working-directory: ./services/users
+    #   run: |
+    #     version=$(cat VERSION)
+    #     echo "Current version: $version"
+    #     # Extract major, minor, patch
+    #     IFS='.' read -r major minor patch <<< "$version"
+    #     patch=$((patch + 1))
+    #     new_version="${major}.${minor}.${patch}"
+    #     echo "$new_version" > VERSION
+    #     echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
     
     - name: Build user service Docker image
       working-directory: ./services/users
-      run: |
-        docker build . -t fastapi-users:${{ steps.version.outputs.new_version }}
+      run: docker build . -t fastapi-users:latest
+        # docker build . -t fastapi-users:${{ steps.version.outputs.new_version }}
 
     - name: Build product service Docker image
       working-directory: ./services/products
-      run: |
-        docker build . -t fastapi-products:${{ steps.version.outputs.new_version }}
+      run: docker build . -t fastapi-products:latest
+        # docker build . -t fastapi-products:${{ steps.version.outputs.new_version }}
       
     # - name: Build user service Docker image
     #   run: |
