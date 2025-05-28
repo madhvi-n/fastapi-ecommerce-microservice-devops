@@ -6,24 +6,40 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  pull-requests: write
+  
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build user service Docker image
+
+    - name: Read and bump version
+      id: version
+      working-directory: ./services/users
       run: |
-        cd services/users
-        docker build . -t fastapi-user:$(date +%s)
+        version=$(cat VERSION)
+        echo "Current version: $version"
+        # Extract major, minor, patch
+        IFS='.' read -r major minor patch <<< "$version"
+        patch=$((patch + 1))
+        new_version="${major}.${minor}.${patch}"
+        echo "$new_version" > VERSION
+        echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
+    
+    - name: Build user service Docker image
+      working-directory: ./services/users
+      run: |
+        docker build . -t fastapi-users:${{ steps.version.outputs.new_version }}
 
     - name: Build product service Docker image
+      working-directory: ./services/products
       run: |
-        cd services/products
-        docker build . -t fastapi-products:$(date +%s)
-        
+        docker build . -t fastapi-products:${{ steps.version.outputs.new_version }}
+      
     # - name: Build user service Docker image
     #   run: |
     #     docker build ./services/user \
